@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Wedding of Rizky & Dila</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#f8f4ef;color:#3d3833;font-family:Montserrat,sans-serif}
+body.lock-scroll{overflow:hidden;height:100vh;touch-action:none}
+h1,h2,h3{font-family:"Cormorant Garamond",serif}
+section{min-height:100vh;padding:80px 20px;display:flex;align-items:center;justify-content:center}
+.container{width:100%;max-width:900px;margin:auto}
+
+/* COVER */
+.cover{
+ position:fixed;inset:0;width:100%;height:100dvh;min-height:650px;
+ color:#fff;text-align:center;z-index:9999;padding:0;
+ background-color:#211b19;
+ background-image:url("imege/background.jpeg");
+ background-position:center;
+ background-size:cover;
+ background-repeat:no-repeat;
+ isolation:isolate;
+ overflow:hidden;
+ transition:opacity .9s ease,visibility .9s ease;
+}
+.cover::before{
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-1;
+ background:linear-gradient(
+   to bottom,
+   rgba(0,0,0,.28),
+   rgba(0,0,0,.38) 45%,
+   rgba(0,0,0,.72)
+ );
+}
+.cover.hide{opacity:0;visibility:hidden;pointer-events:none}
+.cover-content{
+ position:absolute;left:50%;bottom:8%;
+ transform:translateX(-50%);
+ width:92%;max-width:520px;
+ display:flex;flex-direction:column;
+ align-items:center;text-align:center;
+ z-index:2;
+}
+.small-title{font-size:12px;letter-spacing:3.5px;margin-bottom:18px;white-space:nowrap}
+.cover h1{font-size:56px;line-height:1;font-weight:500;white-space:nowrap;margin:0}
+.guest{margin-top:34px;width:100%;max-width:350px}
+.guest-label{font-size:13px;margin-bottom:12px}
+#inputNamaTamu{
+ width:100%;padding:13px 18px;margin-bottom:18px;
+ border:1px solid rgba(255,255,255,.8);border-radius:30px;
+ background:rgba(255,255,255,.12);color:#fff;outline:none;
+ text-align:center;font-family:Montserrat,sans-serif;font-size:14px
+}
+#inputNamaTamu::placeholder{color:#fff;opacity:.85}
+.open-btn{
+ padding:13px 30px;border:1px solid #fff;border-radius:30px;
+ background:#fff;color:#333;cursor:pointer;font-family:Montserrat,sans-serif;
+ font-size:13px;box-shadow:0 5px 20px rgba(0,0,0,.2);transition:.3s
+}
+.open-btn:hover{transform:translateY(-2px)}
+.open-btn:active{transform:scale(.96)}
+
+/* CONTENT */
+.hero{text-align:center;background:#f8f4ef}
+.hero h2{font-size:65px;font-weight:500}
+.subtitle{margin-top:15px;font-size:13px;letter-spacing:2px}
+.nama-tamu-display{margin-top:30px;font-size:14px}
+.nama-tamu-display strong{display:block;margin-top:8px;font-family:"Cormorant Garamond",serif;font-size:32px}
+.profile{text-align:center}
+.section-title{font-size:55px;margin-bottom:20px}
+.description{max-width:650px;margin:0 auto 40px;font-size:14px;line-height:1.9}
+.couple{display:flex;justify-content:center;align-items:center;gap:35px}
+.person{width:260px}
+.person img{width:210px;height:280px;object-fit:cover;border-radius:120px 120px 20px 20px}
+.person h3{font-size:32px;margin-top:18px}
+.person p{font-size:12px;line-height:1.8;margin-top:10px}
+.and{font-family:"Cormorant Garamond";font-size:50px}
+.countdown-section{background:#ebe3d9;text-align:center}
+.countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.time{width:85px;padding:15px 10px;background:#fff}
+.time span{display:block;font-family:"Cormorant Garamond";font-size:40px}
+.time small{font-size:9px;letter-spacing:1px}
+.events{text-align:center}
+.event-wrapper{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.event{width:300px;padding:35px 25px;background:#fff;box-shadow:0 5px 25px rgba(0,0,0,.06)}
+.event h3{font-size:35px}
+.event p{margin-top:15px;font-size:13px;line-height:1.8}
+.map-btn{display:inline-block;margin-top:20px;padding:10px 20px;border:1px solid #777;color:#333;text-decoration:none;font-size:11px}
+.gallery{background:#eee8df;text-align:center}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:30px}
+.gallery-grid img{width:100%;height:240px;object-fit:cover}
+.gallery-grid img:first-child{grid-column:span 2;height:350px}
+.story{text-align:center}
+.story-item{max-width:650px;margin:25px auto;padding:25px;border-left:2px solid #aaa;text-align:left}
+.story-item h3{font-size:32px}
+.story-item p{margin-top:10px;font-size:13px;line-height:1.9}
+.gift{background:#eee8df;text-align:center}
+.bank-card{max-width:400px;margin:25px auto;padding:30px;background:#fff}
+.bank-card h3{font-size:30px}
+.account{margin:18px 0;font-size:24px;letter-spacing:2px}
+.copy-btn{border:0;background:#3d3833;color:#fff;padding:10px 25px;cursor:pointer}
+.rsvp{text-align:center}
+form{max-width:500px;margin:30px auto}
+form input,form select,form textarea{width:100%;margin-bottom:12px;padding:14px;border:1px solid #ddd;background:#fff;font-family:Montserrat,sans-serif}
+textarea{min-height:120px;resize:none}
+.submit{width:100%;padding:14px;border:0;background:#3d3833;color:#fff;cursor:pointer}
+footer{min-height:70vh;display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.5)),url("imege/background.jpeg") center/cover}
+footer h2{font-size:65px}
+footer p{margin-top:20px;font-size:13px}
+.music-btn{position:fixed;right:20px;bottom:20px;width:45px;height:45px;border:0;border-radius:50%;background:#fff;box-shadow:0 3px 15px rgba(0,0,0,.2);z-index:999;cursor:pointer}
+
+/* =========================
+   PAGE MODE / BUTTON NAVIGATION
+========================= */
+html,body{
+    width:100%;
+    height:100%;
+}
+body{
+    overflow:hidden;
+}
+body.lock-scroll{
+    overflow:hidden;
+    height:100dvh;
+}
+body.page-mode{
+    overflow:hidden;
+}
+body.page-mode > section:not(.cover),
+body.page-mode > footer{
+    display:none;
+}
+body.page-mode > section.page-active,
+body.page-mode > footer.page-active{
+    display:flex;
+    width:100%;
+    height:100dvh;
+    min-height:100dvh;
+    overflow-y:auto;
+    padding:70px 20px 110px;
+}
+body.page-mode > section.page-active .container,
+body.page-mode > footer.page-active > div{
+    animation:pageIn .45s ease;
+}
+@keyframes pageIn{
+    from{opacity:0;transform:translateY(18px)}
+    to{opacity:1;transform:translateY(0)}
+}
+.page-nav{
+    position:fixed;
+    left:50%;
+    bottom:22px;
+    transform:translateX(-50%);
+    z-index:5000;
+    display:none;
+    align-items:center;
+    gap:10px;
+}
+body.page-mode .page-nav{
+    display:flex;
+}
+.page-nav button{
+    border:0;
+    border-radius:30px;
+    padding:13px 24px;
+    background:#3d3833;
+    color:#fff;
+    font-family:Montserrat,sans-serif;
+    font-size:12px;
+    cursor:pointer;
+    box-shadow:0 5px 20px rgba(0,0,0,.18);
+}
+.page-nav button:active{
+    transform:scale(.97);
+}
+.page-nav button:disabled{
+    opacity:.4;
+    cursor:not-allowed;
+    box-shadow:none;
+}
+.page-counter{
+    min-width:42px;
+    text-align:center;
+    font-size:10px;
+    letter-spacing:1px;
+    color:#3d3833;
+    background:rgba(255,255,255,.92);
+    padding:10px 8px;
+    border-radius:20px;
+}
+.cover .open-btn{
+    margin-top:0;
+}
+
+@media(max-width:600px){
+ .cover h1{font-size:48px}.cover-content{bottom:8%}.hero h2{font-size:50px}
+ .section-title{font-size:45px}.couple{flex-direction:column}.and{font-size:40px}
+ .gallery-grid img{height:180px}.gallery-grid img:first-child{height:250px}footer h2{font-size:50px}
+}
+
+.rsvp-stats{display:flex;justify-content:center;gap:14px;margin:28px auto 0;max-width:500px}
+.rsvp-stat{flex:1;background:#fff;padding:18px 10px;border:1px solid #e5e0da}
+.rsvp-stat strong{display:block;font-family:"Cormorant Garamond",serif;font-size:42px;font-weight:500}
+.rsvp-stat span{font-size:10px;letter-spacing:2px}
+.messages-wrap{max-width:650px;margin:35px auto 0;text-align:left}
+.messages-wrap h3{font-size:32px;text-align:center;margin-bottom:20px}
+.message-card{background:#fff;padding:18px;margin-bottom:12px;border-left:3px solid #3d3833}
+.message-card .message-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.message-card .message-name{font-weight:600;font-size:13px}
+.message-card .message-status{font-size:10px;letter-spacing:1px;color:#777}
+.message-card .message-text{margin-top:10px;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.empty-message{text-align:center;color:#777;font-size:13px;padding:20px}
+
+</style>
+</head>
+
+<body class="lock-scroll">
+
+<section class="cover" id="cover">
+ <div class="cover-content">
+  <div class="small-title">THE WEDDING OF</div>
+  <h1>Rizky &amp; Dila</h1>
+  <div class="guest">
+   <div class="guest-label">Kepada Yth.<br>Bapak/Ibu/Saudara/i</div>
+   <input id="inputNamaTamu" type="text" placeholder="Masukkan Nama Tamu" autocomplete="off">
+   <button class="open-btn" onclick="openInvitation()">✉&nbsp;&nbsp; Buka Undangan</button>
+  </div>
+ </div>
+</section>
+
+<section class="hero page-section">
+ <div class="container">
+  <div class="small-title">WE ARE GETTING MARRIED</div>
+  <h2>Rizky &amp; Dila</h2>
+  <p class="subtitle">We invite you to celebrate our wedding</p>
+  <p class="subtitle">27 February 2030</p>
+  <div class="nama-tamu-display">Kepada Yth.<strong id="namaTamuDisplay">Tamu Undangan</strong></div>
+ </div>
+</section>
+
+<section class="profile page-section">
+ <div class="container">
+  <h2 class="section-title">We're Getting Married</h2>
+  <p class="description">Assalamu'alaikum Wr. Wb.<br><br>Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i serta kerabat sekalian untuk menghadiri acara pernikahan kami.</p>
+  <div class="couple">
+   <div class="person"><img src="imege/pria.jpg" alt="Rizky"><h3>Rizky Adharidho Putra</h3><p>Putra Pertama dari<br>Bapak Suhartono<br>Ibu Adawiyah</p></div>
+   <div class="and">&amp;</div>
+   <div class="person"><img src="imege/wanita.jpg" alt="Dila"><h3>Siti Fadila</h3><p>Putri Kedua dari<br>Bapak Romlan<br>Ibu Lilis Suryani</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="countdown-section page-section">
+ <div class="container">
+  <h2 class="section-title">Save The Date</h2>
+  <p class="subtitle">SENIN, 27 JULI 2030</p>
+  <p class="description">Dengan penuh rasa syukur, kami menantikan hari istimewa yang telah kami persiapkan.</p>
+  <div class="countdown">
+   <div class="time"><span id="days">0</span><small>HARI</small></div>
+   <div class="time"><span id="hours">0</span><small>JAM</small></div>
+   <div class="time"><span id="minutes">0</span><small>MENIT</small></div>
+   <div class="time"><span id="seconds">0</span><small>DETIK</small></div>
+  </div>
+ </div>
+</section>
+
+<section class="events page-section">
+ <div class="container">
+  <h2 class="section-title">Wedding Event</h2>
+  <div class="event-wrapper">
+   <div class="event">
+    <h3>Akad Nikah</h3>
+    <p>Senin, 27 Juli 2030<br>Pukul 08:00 WIB</p>
+    <p>Kediaman Mempelai Wanita<br>Desa Irat, Bangka Selatan</p>
+    <a href="https://www.google.com/maps/place/-2.671878,106.169105" target="_blank" class="map-btn">Lihat Lokasi</a>
+   </div>
+   <div class="event">
+    <h3>Resepsi</h3>
+    <p>Senin, 27 Juli 2030<br>Pukul 10:00 WIB – Selesai</p>
+    <p>Kediaman Mempelai Wanita<br>Desa Irat, Bangka Selatan</p>
+    <a href="https://www.google.com/maps/place/-2.671878,106.169105" target="_blank" class="map-btn">Lihat Lokasi</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="gallery page-section">
+ <div class="container">
+  <h2 class="section-title">Gallery</h2>
+  <p class="description">Momen-momen indah perjalanan kami.</p>
+  <div class="gallery-grid">
+   <img src="assets/galeri1.jpg" alt=""><img src="assets/galeri2.jpg" alt="">
+   <img src="assets/galeri3.jpg" alt=""><img src="assets/galeri4.jpg" alt="">
+  </div>
+ </div>
+</section>
+
+<section class="story page-section">
+ <div class="container">
+  <h2 class="section-title">Our Story</h2>
+  <div class="story-item"><h3>Awal Cerita</h3><p>Berawal dari pertemuan sederhana, kami saling mengenal dan mulai berbagi banyak cerita hingga akhirnya tumbuh menjadi sebuah rasa.</p></div>
+  <div class="story-item"><h3>Lamaran</h3><p>Dengan niat yang tulus dan restu keluarga, kami memutuskan untuk melangkah ke tahap yang lebih serius.</p></div>
+  <div class="story-item"><h3>Pernikahan</h3><p>Kini kami siap memulai perjalanan baru sebagai sebuah keluarga.</p></div>
+ </div>
+</section>
+
+<section class="gift page-section">
+ <div class="container">
+  <h2 class="section-title">Amplop Digital</h2>
+  <p class="description">Doa restu Anda merupakan karunia yang sangat berarti bagi kami.</p>
+  <div class="bank-card"><h3>DANAMON</h3><div class="account">003709265023</div><p>Rizky Adharidho Putra</p><button class="copy-btn" onclick="copyRekening()">Copy Rekening</button></div>
+ </div>
+</section>
+
+<section class="rsvp page-section">
+ <div class="container">
+  <h2 class="section-title">Ucapkan Sesuatu</h2>
+  <p>Berikan Ucapan &amp; Doa Restu</p>
+  <form onsubmit="sendMessage(event)">
+   <input type="text" id="nama" placeholder="Nama Kamu" required>
+   <select id="kehadiran"><option>Hadir</option><option>Tidak Hadir</option></select>
+   <textarea id="pesan" placeholder="Tulis ucapan dan doa..." required></textarea>
+   <button class="submit" id="submitBtn">Kirim</button>
+  </form>
+
+  <div class="rsvp-stats">
+   <div class="rsvp-stat"><strong id="hadirCount">0</strong><span>HADIR</span></div>
+   <div class="rsvp-stat"><strong id="tidakHadirCount">0</strong><span>TIDAK HADIR</span></div>
+  </div>
+
+  <div class="messages-wrap">
+   <h3>Ucapan &amp; Doa Restu</h3>
+   <div id="messageList"><p class="empty-message">Belum ada ucapan.</p></div>
+  </div>
+ </div>
+</section>
+
+<footer class="page-section">
+ <div>
+  <div class="small-title">TERIMA KASIH</div>
+  <h2>Rizky &amp; Dila</h2>
+  <p>Wassalamu'alaikum Wr. Wb.</p>
+ </div>
+</footer>
+
+
+<!-- NAVIGASI HALAMAN -->
+<div class="page-nav" id="pageNav">
+    <button id="prevBtn" onclick="prevPage()">← Sebelumnya</button>
+    <div class="page-counter" id="pageCounter">1 / 9</div>
+    <button id="nextBtn" onclick="nextPage()">Lanjut Baca →</button>
+</div>
+
+<audio id="music" loop><source src="imege/musik.mp3" type="audio/mpeg"></audio>
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<script>
+const cover=document.getElementById("cover");
+const input=document.getElementById("inputNamaTamu");
+
+const pages = Array.from(document.querySelectorAll(".page-section"));
+let currentPage = 0;
+
+function showPage(index){
+    if(index < 0) index = 0;
+    if(index >= pages.length) index = pages.length - 1;
+
+    pages.forEach((page,i)=>{
+        page.classList.toggle("page-active", i === index);
+    });
+
+    currentPage = index;
+
+    const counter = document.getElementById("pageCounter");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    if(counter) counter.textContent = (index + 1) + " / " + pages.length;
+
+    if(prevBtn) prevBtn.disabled = index === 0;
+
+    if(nextBtn){
+        nextBtn.textContent =
+            index === pages.length - 1
+            ? "Kembali ke Atas ↑"
+            : "Lanjut Baca →";
+    }
+}
+
+function openInvitation(){
+    const nama=input.value.trim();
+
+    if(!nama){
+        alert("Silakan masukkan nama Anda terlebih dahulu.");
+        input.focus();
+        return;
+    }
+
+    localStorage.setItem("namaTamu",nama);
+    document.getElementById("namaTamuDisplay").textContent=nama;
+    document.getElementById("nama").value=nama;
+
+    document.body.classList.remove("lock-scroll");
+    document.body.classList.add("page-mode");
+
+    cover.classList.add("hide");
+
+    document.getElementById("music").play().catch(()=>{});
+
+    setTimeout(()=>{
+        showPage(0);
+    },350);
+}
+
+function prevPage(){
+    if(currentPage > 0){
+        showPage(currentPage - 1);
+    }
+}
+
+function nextPage(){
+    if(currentPage < pages.length - 1){
+        showPage(currentPage + 1);
+    }else{
+        showPage(0);
+    }
+}
+input.addEventListener("keydown",e=>{if(e.key==="Enter")openInvitation()});
+
+const weddingDate=new Date("July 27, 2030 08:00:00").getTime();
+function updateCountdown(){
+ const d=weddingDate-Date.now();
+ if(d<=0)return;
+ document.getElementById("days").textContent=Math.floor(d/86400000);
+ document.getElementById("hours").textContent=Math.floor((d%86400000)/3600000);
+ document.getElementById("minutes").textContent=Math.floor((d%3600000)/60000);
+ document.getElementById("seconds").textContent=Math.floor((d%60000)/1000);
+}
+updateCountdown();setInterval(updateCountdown,1000);
+
+function copyRekening(){
+ navigator.clipboard?.writeText("003709265023").then(()=>alert("Nomor rekening berhasil disalin.")).catch(()=>alert("Nomor rekening: 003709265023"));
+}
+function toggleMusic(){
+ const m=document.getElementById("music");
+ m.paused?m.play().catch(()=>{}):m.pause();
+}
+async function loadRSVP(){
+  try{
+    const res = await fetch("/.netlify/functions/rsvp", {cache:"no-store"});
+    if(!res.ok) throw new Error("Gagal mengambil data");
+    const data = await res.json();
+
+    document.getElementById("hadirCount").textContent = data.hadir || 0;
+    document.getElementById("tidakHadirCount").textContent = data.tidakHadir || 0;
+
+    const list = document.getElementById("messageList");
+    const messages = Array.isArray(data.messages) ? data.messages : [];
+
+    if(!messages.length){
+      list.innerHTML = '<p class="empty-message">Belum ada ucapan.</p>';
+      return;
+    }
+
+    list.innerHTML = messages.map(m => `
+      <div class="message-card">
+        <div class="message-head">
+          <span class="message-name">${escapeHTML(m.nama)}</span>
+          <span class="message-status">${escapeHTML(m.kehadiran)}</span>
+        </div>
+        <div class="message-text">${escapeHTML(m.pesan)}</div>
+      </div>
+    `).join("");
+  }catch(err){
+    console.error("RSVP load error:", err);
+  }
+}
+
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[c]));
+}
+
+async function sendMessage(e){
+  e.preventDefault();
+
+  const namaEl = document.getElementById("nama");
+  const hadirEl = document.getElementById("kehadiran");
+  const pesanEl = document.getElementById("pesan");
+  const btn = document.getElementById("submitBtn");
+
+  const nama = namaEl.value.trim();
+  const kehadiran = hadirEl.value;
+  const pesan = pesanEl.value.trim();
+
+  if(!nama || !pesan){
+    alert("Nama dan ucapan wajib diisi.");
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = "Mengirim...";
+
+  try{
+    const res = await fetch("/.netlify/functions/rsvp", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({nama, kehadiran, pesan})
+    });
+
+    const data = await res.json();
+
+    if(!res.ok || !data.success){
+      throw new Error(data.error || "Gagal mengirim.");
+    }
+
+    pesanEl.value = "";
+    alert("Terima kasih, " + nama + "!");
+    await loadRSVP();
+  }catch(err){
+    console.error("RSVP send error:", err);
+    alert("Gagal mengirim. Coba lagi.");
+  }finally{
+    btn.disabled = false;
+    btn.textContent = "Kirim";
+  }
+}
+
+loadRSVP();
+setInterval(loadRSVP, 10000);
+</script>
+</body>
+</html>
