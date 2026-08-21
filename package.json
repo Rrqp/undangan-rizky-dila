@@ -1,7 +1,0 @@
-{
-  "name": "rizky-dila-undangan",
-  "private": true,
-  "dependencies": {
-    "@netlify/blobs": "latest"
-  }
-}
