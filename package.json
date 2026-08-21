@@ -1,7 +1,0 @@
-{
-  "name": "undangan-rizky-dila",
-  "private": true,
-  "dependencies": {
-    "@netlify/blobs": "^9.0.0"
-  }
-}
